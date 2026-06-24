@@ -13,6 +13,29 @@ export default function HomeScreen() {
         <Button label="del" color="lightGray" onPress={console.log} />
         <Button label="÷" color="orange" onPress={console.log} />
       </View>
+      <View style={styles.row}>
+        <Button label="7" onPress={console.log} />
+        <Button label="8" onPress={console.log} />
+        <Button label="9" onPress={console.log} />
+        <Button label="x" color="orange" onPress={console.log} />
+      </View>
+      <View style={styles.row}>
+        <Button label="4" onPress={console.log} />
+        <Button label="5" onPress={console.log} />
+        <Button label="6" onPress={console.log} />
+        <Button label="-" color="orange" onPress={console.log} />
+      </View>
+      <View style={styles.row}>
+        <Button label="1" onPress={console.log} />
+        <Button label="2" onPress={console.log} />
+        <Button label="3" onPress={console.log} />
+        <Button label="+" color="orange" onPress={console.log} />
+      </View>
+      <View style={styles.row}>
+        <Button label="0" doubleSize onPress={console.log} />
+        <Button label="." onPress={console.log} />
+        <Button label="=" color="orange" onPress={console.log} />
+      </View>
     </View>
   );
 }

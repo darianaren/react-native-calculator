@@ -5,11 +5,24 @@ interface Props {
   label: string;
   color?: "lightGray" | "darkGray" | "orange";
   onPress: VoidFunction;
+  doubleSize?: boolean;
 }
-export const Button = ({ label, color = "darkGray", onPress }: Props) => {
+export const Button = ({
+  label,
+  doubleSize = false,
+  color = "darkGray",
+  onPress,
+}: Props) => {
   return (
     <Pressable
-      style={[styles.button, { backgroundColor: Colors[color] }]}
+      style={({ pressed }) => [
+        styles.button,
+        {
+          backgroundColor: Colors[color],
+          opacity: pressed ? 0.8 : 1,
+          width: doubleSize ? 180 : 80,
+        },
+      ]}
       onPress={onPress}
     >
       <Text
@@ -30,7 +43,6 @@ const styles = StyleSheet.create({
   button: {
     height: 80,
     width: 80,
-    backgroundColor: Colors.darkGray,
     borderRadius: 100,
     justifyContent: "center",
     marginHorizontal: 10,
@@ -40,7 +52,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 10,
     fontSize: 30,
-    color: Colors.textPrimary,
     fontWeight: 300,
   },
 });
