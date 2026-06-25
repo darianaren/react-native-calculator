@@ -1,6 +1,12 @@
 import { Button } from "@/components/Button";
 import { ThemeText } from "@/components/ThemeText";
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
+
+import * as NavigationBar from "expo-navigation-bar";
+
+const isAndroid = Platform.OS === "android";
+
+if (isAndroid) NavigationBar.setBackgroundColorAsync("black");
 
 export default function HomeScreen() {
   return (

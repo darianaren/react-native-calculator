@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/colors";
+import * as Haptics from "expo-haptics";
 import { Pressable, StyleSheet, Text } from "react-native";
 
 interface Props {
@@ -23,7 +24,10 @@ export const Button = ({
           width: doubleSize ? 180 : 80,
         },
       ]}
-      onPress={onPress}
+      onPress={() => {
+        Haptics.selectionAsync();
+        onPress();
+      }}
     >
       <Text
         style={[
