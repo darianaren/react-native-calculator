@@ -17,7 +17,7 @@ export const useCalculator = () => {
   const buildNumber = (numberString: string) => {
     if (number.includes(".") && numberString === ".") return;
 
-    if (number.startsWith("0")) {
+    if (number.startsWith("0") || number.startsWith("-0")) {
       if (numberString !== "0" && !number.includes("."))
         return setNumber(numberString);
 
@@ -25,6 +25,25 @@ export const useCalculator = () => {
     }
 
     setNumber(number + numberString);
+  };
+
+  const clean = () => {
+    setNumber("0");
+    setPrevNumber("0");
+    setFormula("0");
+
+    lastOperation.current = undefined;
+  };
+
+  const toggleSign = () => {
+    if (!number.startsWith("-")) return setNumber((prev) => "-" + prev);
+
+    setNumber((prev) => prev.slice(1));
+  };
+
+  const deleteLast = () => {
+    if (number.length === 1) return setNumber("0");
+    setNumber((prev) => prev.slice(0, -1));
   };
 
   useEffect(() => {
@@ -39,5 +58,8 @@ export const useCalculator = () => {
 
     // Methods
     buildNumber,
+    clean,
+    toggleSign,
+    deleteLast,
   };
 };

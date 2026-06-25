@@ -10,15 +10,16 @@ const isAndroid = Platform.OS === "android";
 if (isAndroid) NavigationBar.setBackgroundColorAsync("black");
 
 export default function HomeScreen() {
-  const { formula, buildNumber } = useCalculator();
+  const { formula, buildNumber, clean, toggleSign, deleteLast } =
+    useCalculator();
   return (
     <View style={styles.container}>
       <ThemeText>{formula}</ThemeText>
       <ThemeText variant="h2">12</ThemeText>
       <View style={styles.row}>
-        <Button label="C" color="lightGray" onPress={() => console.log("")} />
-        <Button label="+/-" color="lightGray" onPress={() => console.log("")} />
-        <Button label="del" color="lightGray" onPress={() => console.log("")} />
+        <Button label="C" color="lightGray" onPress={clean} />
+        <Button label="+/-" color="lightGray" onPress={toggleSign} />
+        <Button label="del" color="lightGray" onPress={deleteLast} />
         <Button label="÷" color="orange" onPress={() => console.log("")} />
       </View>
       <View style={styles.row}>
